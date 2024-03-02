@@ -1,2 +1,2 @@
-cargo:rerun-if-changed=./proto/chat.proto
+cargo:rerun-if-changed=./proto/movie.proto
 cargo:rerun-if-changed=./proto

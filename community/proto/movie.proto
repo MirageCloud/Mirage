@@ -1,0 +1,21 @@
+syntax = "proto3";
+package movie;
+message MovieItem {
+    int32 id = 1;
+    string title = 2;
+    int32 year = 3;
+    string genre = 4;
+    string rating = 5;
+    string starRating = 6;
+    string runtime = 7;
+    string cast = 8;
+    string image = 9;
+}
+message MovieRequest {
+}
+message MovieResponse {
+    repeated MovieItem movies = 1;
+}
+service Movie {
+    rpc GetMovies (MovieRequest) returns (MovieResponse);
+}
