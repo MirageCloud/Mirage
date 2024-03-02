@@ -1,6 +1,9 @@
 # Ignore compiled files
 /target/
 
+# Ignore compiled files
+target/
+
 # Ignore Cargo.lock file
 Cargo.lock
 
