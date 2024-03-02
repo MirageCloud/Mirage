@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://github.com/protocolbuffers/protobuf/releases
+HostUrl=https://objects.githubusercontent.com/github-production-release-asset-2e65be/23357588/a01b706f-be37-4f6a-9bf6-2554fdd5bfde?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240302%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240302T075518Z&X-Amz-Expires=300&X-Amz-Signature=86fde003305fb74ee28693aa0f4fd519eba94bff81639e2de691516b3c25f83b&X-Amz-SignedHeaders=host&actor_id=81290616&key_id=0&repo_id=23357588&response-content-disposition=attachment%3B%20filename%3Dprotoc-25.3-win64.zip&response-content-type=application%2Foctet-stream
