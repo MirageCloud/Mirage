@@ -1,19 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './components/Navbar/Navbar'
 
+import './App.css'
+import Btnfooter from './components/Logo/Btnfooter'
+import SpeedTestBtn from './components/Logo/SpeedTestBtn'
 function App() {
   
 
   return (
     <>
-      <div>
-        <Navbar />
+      <div >
+        <SpeedTestBtn/>
+
+
+        <Btnfooter /> 
         
       </div>
       
+  
     </>
   )
 }
