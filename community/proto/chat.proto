@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package chat;
+
+// Message representing a chat request from a client to the server
+message ChatMessage {
+  string sender_id = 1;
+  string reciever_id = 2;
+  string content = 3;
+  google.protobuf.Timestamp timestamp = 4;
+}
+
+// Message representing a chat request from a client to the server
+message UserData {
+  string sender_id = 1;
+  string reciever_id = 2;
+}
+
+// Service definition for the chat server
+service ChatService {
+  // Unary RPC method for sending a chat message
+  rpc SendMessage(ChatMessage) returns (stream ChatMessage) {}
+  
+  // Server streaming RPC method for broadcasting messages to clients
+  rpc ReceiveMessages(UserData) returns (stream ChatMessage) {}
+}
