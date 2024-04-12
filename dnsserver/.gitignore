@@ -1,0 +1,20 @@
+# Ignore compiled files
+/target/
+
+# Ignore compiled files
+target/
+
+# Ignore Cargo.lock file
+Cargo.lock
+
+# Ignore .vscode directory
+.vscode/
+
+# Ignore .idea directory
+.idea/
+
+# Ignore .rustc_info.json file
+.rustc_info.json
+
+# Ignore .history directory
+.history/
