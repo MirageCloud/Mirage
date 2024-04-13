@@ -1,8 +1,13 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
+/* body{
   background-color: gray;
+} */
+html,
+body {
+  background-color: white;
+  color: black;
 }
