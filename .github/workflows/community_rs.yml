@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         folders: [community]
-    name: 🦀 ${{matrix.folders}} CI
+    name: ${{matrix.folders}}
     steps:
       - uses: actions/checkout@v4
 
