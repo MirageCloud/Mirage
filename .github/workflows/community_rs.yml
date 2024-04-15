@@ -1,0 +1,51 @@
+name: 🦀Rust CI
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ (github.event.pull_request && github.event.pull_request.number) || github.ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folders: [community]
+    name: ${{matrix.folders}}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+            components: rustfmt, clippy
+
+      - name: Check
+        run: cargo check
+        working-directory: ${{matrix.folders}}
+
+      - name: Format and Clippy
+        run: |
+          cargo fmt --all -- --check
+          cargo clippy
+        working-directory: ${{matrix.folders}}
+
+      - name: Build Debug
+        run: cargo build --verbose
+        working-directory: ${{matrix.folders}}
+
+      - name: Run tests
+        run: cargo test --verbose
+        working-directory: ${{matrix.folders}}
+
+      - name: Build Release
+        run: cargo build --verbose --release
+        working-directory: ${{matrix.folders}}
