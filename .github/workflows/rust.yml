@@ -18,8 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        folders: [community]
-    name: ${{matrix.folders}}
+        folder: [community, dnsserver]
+    name: ${{matrix.folder}}
     steps:
       - uses: actions/checkout@v4
 
@@ -30,22 +30,22 @@ jobs:
 
       - name: Check
         run: cargo check
-        working-directory: ${{matrix.folders}}
+        working-directory: ${{matrix.folder}}
 
       - name: Format and Clippy
         run: |
           cargo fmt --all -- --check
           cargo clippy
-        working-directory: ${{matrix.folders}}
+        working-directory: ${{matrix.folder}}
 
       - name: Build Debug
         run: cargo build --verbose
-        working-directory: ${{matrix.folders}}
+        working-directory: ${{matrix.folder}}
 
       - name: Run tests
         run: cargo test --verbose
-        working-directory: ${{matrix.folders}}
+        working-directory: ${{matrix.folder}}
 
       - name: Build Release
         run: cargo build --verbose --release
-        working-directory: ${{matrix.folders}}
+        working-directory: ${{matrix.folder}}

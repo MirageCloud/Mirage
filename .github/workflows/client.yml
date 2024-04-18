@@ -1,0 +1,41 @@
+name: 💻Client CI
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ (github.event.pull_request && github.event.pull_request.number) || github.ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folder: [client]
+    name: ${{matrix.folder}}
+    steps:
+      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
+
+      - name: Install Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+  
+      - name: Install Dependencies
+        run: npm ci
+        working-directory: ${{matrix.folder}}
+
+      - name: Lint
+        run: npm run lint
+        working-directory: ${{matrix.folder}}
+
+      # - name: Run tests
+      #   run: npm test
+      #   working-directory: ${{matrix.folder}}
