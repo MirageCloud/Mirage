@@ -31,9 +31,6 @@ jobs:
         # https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#overriding-automatic-language-detection
 
     steps:
-    - name: Ensure PR is not on main branch
-      uses: ./.github/actions/block-pr-not-on-main
-
     - name: Harden Runner
       uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
       with:
@@ -41,6 +38,9 @@ jobs:
 
     - name: Checkout repository
       uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
+
+    - name: Ensure PR is not on main branch
+      uses: ./.github/actions/block-pr-not-on-main
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
