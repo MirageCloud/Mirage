@@ -1,15 +1,23 @@
 name: 🔐CodeQL-Rust
+on:
+  push:
+    branches: [main]
 
-on: [push, pull_request]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read    
 
 jobs:
   cargo-vet:
-    name: Vet Dependencies
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        folder: [community, dnsserver]
+    name: CodeQL-Rust-${{matrix.folder}}
     env:
       CARGO_VET_VERSION: 0.9.1
-    
     steps:
     - uses: actions/checkout@master
 
@@ -29,3 +37,4 @@ jobs:
       
     - name: Invoke cargo-vet
       run: cargo vet --locked
+      working-directory: ${{matrix.folder}}
