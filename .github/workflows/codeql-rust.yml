@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         folder: [community, dnsserver]
-    name: CodeQL-Rust-${{matrix.folder}}
+    name: CodeQL-Rust
     env:
       CARGO_VET_VERSION: 0.9.1
     steps:
@@ -36,5 +36,5 @@ jobs:
       run: cargo install --root ${{ runner.tool_cache }}/cargo-vet --version ${{ env.CARGO_VET_VERSION }} cargo-vet
       
     - name: Invoke cargo-vet
-      run: cargo vet --locked
+      run: cargo vet --offline
       working-directory: ${{matrix.folder}}
