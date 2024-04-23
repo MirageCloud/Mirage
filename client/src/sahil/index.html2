@@ -1,0 +1,10 @@
+window.onload = () => {
+  messages.forEach((message) => {
+    chatMessages.innerHTML += createChatMessageElement(message)
+  })
+}
+if (name === 'pushkar') {
+    johnSelectorBtn.classList.add('active-person')
+    janeSelectorBtn.classList.remove('active-person')
+  }
+  chatMessages.innerHTML += createChatMessageElement(message)
